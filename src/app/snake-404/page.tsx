@@ -493,16 +493,6 @@ const SnakeGame: React.FC = () => {
               返回验证页面
             </button>
           </div>
-
-          {/* 移动端提示 */}
-          {isMobile && (
-            <div className="text-xs font-mono mobile-hint"
-                 style={{ color: 'var(--pixel-accent)', fontFamily: 'VT323, monospace' }}>
-              <div className="pixel-panel p-2">
-                📱 移动端优化版贪吃蛇游戏
-              </div>
-            </div>
-          )}
         </motion.div>
       </div>
     </div>

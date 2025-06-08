@@ -144,7 +144,7 @@ const AuthPage: React.FC = () => {
               type="text"
               value={input}
               onChange={handleInputChange}
-              placeholder="输入答案..."
+              placeholder="Input your answer..."
               className="w-full p-3 sm:p-3 pixel-panel font-mono text-sm touch-friendly"
               style={{
                 background: 'var(--pixel-bg)',
@@ -189,7 +189,7 @@ const AuthPage: React.FC = () => {
               fontFamily: 'VT323, monospace'
             }}
           >
-            需要提示？
+            Need hint?
           </button>
           
           {showHint && (
@@ -205,21 +205,6 @@ const AuthPage: React.FC = () => {
               Hint: Fullname of D5
             </motion.p>
           )}
-        </motion.div>
-
-        {/* 移动端操作提示 */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="mt-6 sm:mt-8 text-xs font-mono mobile-hint text-center"
-          style={{ 
-            color: 'var(--pixel-primary)',
-            fontFamily: 'VT323, monospace'
-          }}
-        >
-          <div>📱 移动端优化版本</div>
-          <div>触摸操作已启用</div>
         </motion.div>
 
         {/* 装饰性代码滚动 */}
