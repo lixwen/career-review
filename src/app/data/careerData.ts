@@ -13,20 +13,20 @@ export const careerData: TreeNode = {
   id: 'root',
   name: '转正述职',
   category: 'root',
-  color: '#3B82F6',
+  color: '#00ff41',
   children: [
-    {
-      id: 'work-review',
-      name: '1. 工作回顾',
-      category: 'main',
-      color: '#10B981',
-      icon: '💼',
+          {
+        id: 'work-review',
+        name: '1. 工作回顾',
+        category: 'main',
+        color: '#41b3ff',
+        icon: '⚡',
       children: [
-        {
-          id: 'works',
-          name: 'Works',
-          category: 'sub',
-          color: '#059669',
+                  {
+            id: 'works',
+            name: 'Works',
+            category: 'sub',
+            color: '#00ff41',
           description: '后端技术调研、方案选型以及代码开发等工作',
           details: [
             '机器审核相关后端框架设计、开发，例如：相似图片识别、内容安全检测等',
@@ -35,22 +35,22 @@ export const careerData: TreeNode = {
             '运营侧数据需求提供'
           ]
         },
-        {
-          id: 'data',
-          name: '数据',
-          category: 'sub',
-          color: '#059669',
+                  {
+            id: 'data',
+            name: '数据',
+            category: 'sub',
+            color: '#ff6b35',
           description: '数据处理和基础设施建设',
           details: [
             'DataX 替代 Canal 做数仓数据同步，修改部分源码方便使用',
             '和 @姚子贤 一起做 Grafana 面板搭建，以及通过阅读 Grafana 源码，然后修改相关的存储数据来解决 Grafana 社区版无权限管理问题'
           ]
         },
-        {
-          id: 'issue-analysis',
-          name: '线上问题分析',
-          category: 'sub',
-          color: '#059669',
+                  {
+            id: 'issue-analysis',
+            name: '线上问题分析',
+            category: 'sub',
+            color: '#ffed4e',
           description: '问题定位和分析能力',
           details: [
             '一起定位分析 RocketMQ 出现多个消费者消费一个 TAG 的问题',
@@ -59,30 +59,30 @@ export const careerData: TreeNode = {
         }
       ]
     },
-    {
-      id: 'sharing',
-      name: '2. 分享',
-      category: 'main',
-      color: '#F59E0B',
-      icon: '🚀',
+          {
+        id: 'sharing',
+        name: '2. 分享',
+        category: 'main',
+        color: '#ff6b35',
+        icon: '▲',
       description: '技术分享和推广',
       details: [
         '组内推荐使用 AI 结合 PlantUML 实现流程图实现自由',
         'AI 编辑器使用推荐：Cursor 使用指北'
       ]
     },
-    {
-      id: 'gains',
-      name: '3. 收获',
-      category: 'main',
-      color: '#8B5CF6',
-      icon: '🎯',
+          {
+        id: 'gains',
+        name: '3. 收获',
+        category: 'main',
+        color: '#ff073a',
+        icon: '★',
       children: [
-        {
-          id: 'work-gains',
-          name: '工作上',
-          category: 'sub',
-          color: '#7C3AED',
+                  {
+            id: 'work-gains',
+            name: '工作上',
+            category: 'sub',
+            color: '#ff073a',
           description: '技术和业务能力提升',
           details: [
             '快速熟悉了当前服务端使用的后端技术栈，比如：RocketMQ、Apache Doris等',
@@ -90,11 +90,11 @@ export const careerData: TreeNode = {
             '在产品和运营上也学习了挺多，之前做 ToC 产品的时候，对这一块了解不够。比如：转化率、推荐分析等。'
           ]
         },
-        {
-          id: 'life-gains',
-          name: '生活中',
-          category: 'sub',
-          color: '#7C3AED',
+                  {
+            id: 'life-gains',
+            name: '生活中',
+            category: 'sub',
+            color: '#ffed4e',
           description: '生活和兴趣拓展',
           details: [
             '与新认识的小伙伴们一起去打🎱',
@@ -104,36 +104,36 @@ export const careerData: TreeNode = {
         }
       ]
     },
-    {
-      id: 'thinking',
-      name: '4. 思考与反思',
-      category: 'main',
-      color: '#EF4444',
-      icon: '🤔',
+          {
+        id: 'thinking',
+        name: '4. 思考与反思',
+        category: 'main',
+        color: '#41b3ff',
+        icon: '?',
       description: '思考与反思',
       details: [
         '尽量避免出现忙碌中出错的问题',
         '如何更好的使用 AI 是一个趋势'
       ]
     },
-    {
-      id: 'outlook',
-      name: '5. 展望',
-      category: 'main',
-      color: '#06B6D4',
-      icon: '🌟',
+          {
+        id: 'outlook',
+        name: '5. 展望',
+        category: 'main',
+        color: '#00ff41',
+        icon: '►',
       description: '未来规划和目标',
       details: [
         '打好基础，希望 Works 站点能够更好的发展，能给 D5 带来更多的用户以及盈利。',
         '在 AI 大趋势下，始终保持持续学习的习惯。也要改变学习的方式。'
       ]
     },
-    {
-      id: 'suggestions',
-      name: '6. 建议',
-      category: 'main',
-      color: '#84CC16',
-      icon: '💡',
+          {
+        id: 'suggestions',
+        name: '6. 建议',
+        category: 'main',
+        color: '#ffed4e',
+        icon: '!',
       description: '改进建议和想法',
       details: [
         '在当前的相似图识别场景中，单体场景识别的误判较高，如果能利用公司的 AI 资源，对相关的行业图片做微调，可能会有更好的准确度。',
