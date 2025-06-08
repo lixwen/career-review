@@ -17,7 +17,7 @@ export const careerData: TreeNode = {
   children: [
     {
       id: 'work-review',
-      name: '工作回顾',
+      name: '1. 工作回顾',
       category: 'main',
       color: '#10B981',
       icon: '💼',
@@ -61,7 +61,7 @@ export const careerData: TreeNode = {
     },
     {
       id: 'sharing',
-      name: '一些分享',
+      name: '2. 分享',
       category: 'main',
       color: '#F59E0B',
       icon: '🚀',
@@ -73,7 +73,7 @@ export const careerData: TreeNode = {
     },
     {
       id: 'gains',
-      name: '一些收获',
+      name: '3. 收获',
       category: 'main',
       color: '#8B5CF6',
       icon: '🎯',
@@ -106,11 +106,11 @@ export const careerData: TreeNode = {
     },
     {
       id: 'thinking',
-      name: '一些思考',
+      name: '4. 思考与反思',
       category: 'main',
       color: '#EF4444',
       icon: '🤔',
-      description: '反思和思考',
+      description: '思考与反思',
       details: [
         '尽量避免出现忙碌中出错的问题',
         '如何更好的使用 AI 是一个趋势'
@@ -118,7 +118,7 @@ export const careerData: TreeNode = {
     },
     {
       id: 'outlook',
-      name: '一些展望',
+      name: '5. 展望',
       category: 'main',
       color: '#06B6D4',
       icon: '🌟',
@@ -130,7 +130,7 @@ export const careerData: TreeNode = {
     },
     {
       id: 'suggestions',
-      name: '一些建议',
+      name: '6. 建议',
       category: 'main',
       color: '#84CC16',
       icon: '💡',

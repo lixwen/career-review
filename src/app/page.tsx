@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 export default function HomePage() {
   const [selectedNode, setSelectedNode] = useState<TreeNode | null>(null);
   const [visitedNodes, setVisitedNodes] = useState<Set<string>>(new Set());
-  const [expandedNodes, setExpandedNodes] = useState<Set<string>>(new Set(['root'])); // 初始只展开根节点
+  const [expandedNodes, setExpandedNodes] = useState<Set<string>>(new Set()); // 初始状态不展开任何节点，只显示根节点
 
   // 统计总节点数（除了根节点）
   const getTotalNodes = (node: TreeNode): number => {
@@ -24,19 +24,25 @@ export default function HomePage() {
   const totalNodes = getTotalNodes(careerData);
 
   const handleNodeClick = useCallback((node: TreeNode) => {
-    // 如果点击的节点有子节点且还没展开，则展开它
-    if (node.children && node.children.length > 0 && !expandedNodes.has(node.id)) {
-      setExpandedNodes(prev => new Set(prev).add(node.id));
-      // 同时记录为已访问
-      setVisitedNodes(prev => new Set(prev).add(node.id));
-    } else {
-      // 如果没有子节点或已经展开，则显示详情
-      setSelectedNode(node);
-      if (node.id !== 'root') {
-        setVisitedNodes(prev => new Set(prev).add(node.id));
-      }
+    // 单击：总是显示详情卡片并标记为已访问
+    setSelectedNode(node);
+    setVisitedNodes(prev => new Set(prev).add(node.id));
+  }, []);
+
+  const handleNodeDoubleClick = useCallback((node: TreeNode) => {
+    // 双击：展开/收起有子节点的节点
+    if (node.children && node.children.length > 0) {
+      setExpandedNodes(prev => {
+        const newSet = new Set(prev);
+        if (newSet.has(node.id)) {
+          newSet.delete(node.id); // 如果已展开，则收起
+        } else {
+          newSet.add(node.id); // 如果未展开，则展开
+        }
+        return newSet;
+      });
     }
-  }, [expandedNodes]);
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
@@ -55,22 +61,6 @@ export default function HomePage() {
           >
             转正述职报告
           </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="text-lg text-gray-600 mb-2"
-          >
-            交互式思维导图展示
-          </motion.p>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="text-sm text-gray-500"
-          >
-            点击节点深入了解我的成长历程与收获
-          </motion.p>
         </div>
       </motion.header>
 
@@ -85,7 +75,9 @@ export default function HomePage() {
           <MindMap 
             data={careerData} 
             onNodeClick={handleNodeClick}
+            onNodeDoubleClick={handleNodeDoubleClick}
             expandedNodes={expandedNodes}
+            visitedNodes={visitedNodes}
           />
           <ExplorationProgress 
             totalNodes={totalNodes}

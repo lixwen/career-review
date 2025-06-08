@@ -144,14 +144,6 @@ const DetailPanel: React.FC<DetailPanelProps> = ({ node, onClose }) => {
               </div>
             )}
 
-            {/* 分隔线 */}
-            {(node.details?.length || node.children?.length) && (
-              <div className="mt-8 pt-6 border-t border-gray-200">
-                <div className="text-center text-sm text-gray-500">
-                  继续点击其他节点探索更多内容
-                </div>
-              </div>
-            )}
           </div>
 
           {/* 底部操作 */}

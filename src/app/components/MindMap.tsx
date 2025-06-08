@@ -7,7 +7,9 @@ import { TreeNode } from '../data/careerData';
 interface MindMapProps {
   data: TreeNode;
   onNodeClick: (node: TreeNode) => void;
+  onNodeDoubleClick: (node: TreeNode) => void;
   expandedNodes: Set<string>;
+  visitedNodes: Set<string>;
 }
 
 interface D3Node extends d3.SimulationNodeDatum {
@@ -26,16 +28,40 @@ interface D3Link extends d3.SimulationLinkDatum<D3Node> {
   target: D3Node;
 }
 
-const MindMap: React.FC<MindMapProps> = ({ data, onNodeClick, expandedNodes }) => {
+const MindMap: React.FC<MindMapProps> = ({ data, onNodeClick, onNodeDoubleClick, expandedNodes, visitedNodes }) => {
   const svgRef = useRef<SVGSVGElement>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-
-
+  const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // 使用 useCallback 来稳定化检查函数
   const isNodeExpanded = useCallback((nodeId: string) => {
     return expandedNodes.has(nodeId);
   }, [expandedNodes]);
+
+  // 检查节点是否已访问
+  const isNodeVisited = useCallback((nodeId: string) => {
+    return visitedNodes.has(nodeId);
+  }, [visitedNodes]);
+
+  // 智能点击处理函数，区分单击和双击
+  const handleNodeClickEvent = useCallback((event: MouseEvent, node: TreeNode) => {
+    event.stopPropagation();
+    
+    // 如果已经有待处理的单击，清除它（意味着这是双击）
+    if (clickTimeoutRef.current) {
+      clearTimeout(clickTimeoutRef.current);
+      clickTimeoutRef.current = null;
+      // 处理双击
+      onNodeDoubleClick(node);
+    } else {
+      // 设置延迟处理单击
+      clickTimeoutRef.current = setTimeout(() => {
+        clickTimeoutRef.current = null;
+        // 处理单击
+        onNodeClick(node);
+      }, 250); // 250ms延迟
+    }
+  }, [onNodeClick, onNodeDoubleClick]);
 
   useEffect(() => {
     const updateDimensions = () => {
@@ -47,7 +73,14 @@ const MindMap: React.FC<MindMapProps> = ({ data, onNodeClick, expandedNodes }) =
 
     updateDimensions();
     window.addEventListener('resize', updateDimensions);
-    return () => window.removeEventListener('resize', updateDimensions);
+    return () => {
+      window.removeEventListener('resize', updateDimensions);
+      // 清理点击定时器
+      if (clickTimeoutRef.current) {
+        clearTimeout(clickTimeoutRef.current);
+        clickTimeoutRef.current = null;
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -195,9 +228,10 @@ const MindMap: React.FC<MindMapProps> = ({ data, onNodeClick, expandedNodes }) =
         );
       })
       .on('click', (event, d) => {
-        event.stopPropagation();
-        onNodeClick(d.originalData);
+        handleNodeClickEvent(event, d.originalData);
       });
+
+
 
     // 添加图标
     nodeGroup.append('text')
@@ -235,7 +269,7 @@ const MindMap: React.FC<MindMapProps> = ({ data, onNodeClick, expandedNodes }) =
       simulation.stop();
     };
 
-  }, [data, dimensions, onNodeClick, isNodeExpanded]);
+  }, [data, dimensions, handleNodeClickEvent, isNodeExpanded, isNodeVisited]);
 
   return (
     <div className="relative w-full h-full">
@@ -249,9 +283,9 @@ const MindMap: React.FC<MindMapProps> = ({ data, onNodeClick, expandedNodes }) =
       <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-4 shadow-lg">
         <h3 className="font-bold text-gray-800 mb-2">🎯 探索我的转正历程</h3>
         <div className="space-y-1 text-sm text-gray-600">
-          <p>• 点击中心节点开始探索</p>
+          <p>• 单击节点查看详细内容</p>
+          <p>• 双击节点展开/收起子节点</p>
           <p>• 橙色虚线边框表示可展开</p>
-          <p>• 再次点击查看详细内容</p>
         </div>
       </div>
     </div>
