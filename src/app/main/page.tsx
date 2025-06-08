@@ -153,28 +153,6 @@ export default function MainPage() {
               </div>
             </motion.div>
           </div>
-          
-          {/* 移动端操作提示 */}
-          {isMobile && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-              className="text-xs font-mono mb-4 text-center mobile-hint"
-              style={{ 
-                color: 'var(--pixel-accent)',
-                fontFamily: 'VT323, monospace'
-              }}
-            >
-              <div className="pixel-panel p-2 mx-4" style={{ background: 'var(--pixel-bg)' }}>
-                <div>📱 移动端操作指南:</div>
-                <div>• 单击节点查看详情</div>
-                <div>• 双击节点展开/收起</div>
-                <div>• 拖拽可移动视角</div>
-                <div>• 双指缩放调整大小</div>
-              </div>
-            </motion.div>
-          )}
         </div>
       </motion.header>
 

@@ -452,21 +452,19 @@ const MindMap: React.FC<MindMapProps> = ({ data, onNodeClick, onNodeDoubleClick,
         }}
       />
       
-      {/* 移动端操作提示 */}
-      {isMobile && (
-        <div 
-          className="absolute top-2 left-2 text-xs font-mono mobile-hint opacity-75"
-          style={{ 
-            color: 'var(--pixel-accent)',
-            fontFamily: 'VT323, monospace',
-            background: 'rgba(42, 42, 42, 0.8)',
-            padding: '4px 8px',
-            border: '1px solid var(--pixel-border)'
-          }}
-        >
-          点击查看 • 长按展开
-        </div>
-      )}
+      {/* 操作提示 */}
+      <div 
+        className="absolute top-2 left-2 text-xs font-mono opacity-75"
+        style={{ 
+          color: 'var(--pixel-accent)',
+          fontFamily: 'VT323, monospace',
+          background: 'rgba(42, 42, 42, 0.8)',
+          padding: '4px 8px',
+          border: '1px solid var(--pixel-border)'
+        }}
+      >
+        {isMobile ? '单击查看 • 长按展开' : '单击查看 • 双击展开'}
+      </div>
     </div>
   );
 };

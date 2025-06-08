@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "转正述职报告 - 交互式思维导图",
+  title: "转正述职报告",
   description: "基于D3.js构建的交互式述职展示，通过点击探索的方式展现工作成果、收获与思考",
   icons: {
     icon: [
