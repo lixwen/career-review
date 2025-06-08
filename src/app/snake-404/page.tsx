@@ -60,7 +60,11 @@ const SnakeGame: React.FC = () => {
   }, []);
 
   // 重置游戏
-  const resetGame = useCallback(() => {
+  const resetGame = useCallback((e?: React.TouchEvent | React.MouseEvent) => {
+    if (e && isMobile) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     setSnake(INITIAL_SNAKE);
     setFood({ x: 15, y: 15 });
     setDirection(INITIAL_DIRECTION);
@@ -70,7 +74,7 @@ const SnakeGame: React.FC = () => {
     if (gameLoopRef.current) {
       clearInterval(gameLoopRef.current);
     }
-  }, []);
+  }, [isMobile]);
 
   // 改变方向
   const changeDirection = useCallback((newDirection: Direction) => {
@@ -199,14 +203,22 @@ const SnakeGame: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyPress);
   }, [gameStarted, gameOver, changeDirection]);
 
-  const startGame = () => {
+  const startGame = (e?: React.TouchEvent | React.MouseEvent) => {
+    if (e && isMobile) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     if (!gameStarted) {
       setGameStarted(true);
     }
   };
 
   // 虚拟手柄按钮点击处理
-  const handleVirtualButton = (direction: Direction) => {
+  const handleVirtualButton = (direction: Direction, e?: React.TouchEvent | React.MouseEvent) => {
+    if (e && isMobile) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     if (!gameStarted && !gameOver) {
       setGameStarted(true);
     }
@@ -345,6 +357,7 @@ const SnakeGame: React.FC = () => {
                       </p>
                       <button 
                         onClick={startGame}
+                        {...(isMobile && { onTouchStart: startGame })}
                         className="pixel-btn touch-friendly"
                       >
                         START
@@ -364,12 +377,25 @@ const SnakeGame: React.FC = () => {
                       <div className="flex gap-2 justify-center flex-wrap">
                         <button 
                           onClick={resetGame}
+                          {...(isMobile && { onTouchStart: resetGame })}
                           className="pixel-btn touch-friendly"
                         >
                           RETRY
                         </button>
                         <button 
-                          onClick={() => router.push('/auth')}
+                          onClick={(e) => {
+                            if (isMobile) {
+                              e.preventDefault();
+                              e.stopPropagation();
+                            }
+                            router.push('/auth');
+                          }}
+                          {...(isMobile && { 
+                            onTouchStart: (e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                            }
+                          })}
                           className="pixel-btn touch-friendly"
                           style={{ background: 'var(--pixel-accent)' }}
                         >
@@ -399,16 +425,16 @@ const SnakeGame: React.FC = () => {
               <div></div>
               <button 
                 className="gamepad-btn no-select"
-                onTouchStart={() => handleVirtualButton('UP')}
-                onClick={() => handleVirtualButton('UP')}
+                onTouchStart={(e) => handleVirtualButton('UP', e)}
+                onClick={(e) => handleVirtualButton('UP', e)}
               >
                 ▲
               </button>
               <div></div>
               <button 
                 className="gamepad-btn no-select"
-                onTouchStart={() => handleVirtualButton('LEFT')}
-                onClick={() => handleVirtualButton('LEFT')}
+                onTouchStart={(e) => handleVirtualButton('LEFT', e)}
+                onClick={(e) => handleVirtualButton('LEFT', e)}
               >
                 ◄
               </button>
@@ -417,16 +443,16 @@ const SnakeGame: React.FC = () => {
               </div>
               <button 
                 className="gamepad-btn no-select"
-                onTouchStart={() => handleVirtualButton('RIGHT')}
-                onClick={() => handleVirtualButton('RIGHT')}
+                onTouchStart={(e) => handleVirtualButton('RIGHT', e)}
+                onClick={(e) => handleVirtualButton('RIGHT', e)}
               >
                 ►
               </button>
               <div></div>
               <button 
                 className="gamepad-btn no-select"
-                onTouchStart={() => handleVirtualButton('DOWN')}
-                onClick={() => handleVirtualButton('DOWN')}
+                onTouchStart={(e) => handleVirtualButton('DOWN', e)}
+                onClick={(e) => handleVirtualButton('DOWN', e)}
               >
                 ▼
               </button>
@@ -448,7 +474,19 @@ const SnakeGame: React.FC = () => {
               系统错误代码: INVALID_CREDENTIALS
             </p>
             <button
-              onClick={() => router.push('/auth')}
+              onClick={(e) => {
+                if (isMobile) {
+                  e.preventDefault();
+                  e.stopPropagation();
+                }
+                router.push('/auth');
+              }}
+              {...(isMobile && { 
+                onTouchStart: (e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                }
+              })}
               className="pixel-btn touch-friendly"
               style={{ background: 'var(--pixel-primary)' }}
             >

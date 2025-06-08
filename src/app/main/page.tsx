@@ -132,6 +132,7 @@ export default function MainPage() {
                 <span style={{ color: 'var(--pixel-accent)' }}>STATUS: ONLINE</span>
                 <span style={{ color: 'var(--pixel-warning)' }}>LEVEL: PROBATION→FULL</span>
                 <span style={{ color: 'var(--pixel-primary)' }}>EXP: 999+</span>
+                <span style={{ color: 'var(--pixel-primary)' }}>NAME: 温立旭</span>
               </div>
               
               {/* 注销按钮 */}
