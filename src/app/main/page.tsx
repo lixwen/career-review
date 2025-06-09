@@ -123,7 +123,7 @@ export default function MainPage() {
               {/* 像素风格副标题 */}
               <div className="font-mono text-xs sm:text-sm md:text-base mb-3 sm:mb-4" style={{ color: 'var(--pixel-text-dim)' }}>
                 <span className="pixel-blink">█</span> 
-                <span className="ml-1 sm:ml-2">{isMobile ? 'CAREER REVIEW' : 'INTERACTIVE CAREER REVIEW SYSTEM'}</span>
+                <span className="ml-1 sm:ml-2">{isMobile ? 'D5 CAREER REVIEW' : 'INTERACTIVE D5 CAREER REVIEW SYSTEM'}</span>
                 <span className="pixel-blink ml-1 sm:ml-2">█</span>
               </div>
               
