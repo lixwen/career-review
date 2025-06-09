@@ -126,7 +126,7 @@ const AuthPage: React.FC = () => {
                 lineHeight: '1.6'
               }}
             >
-              Where am I now?
+              Where am i now?
             </p>
           </div>
         </motion.div>
