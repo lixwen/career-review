@@ -31,7 +31,7 @@ export const careerData: TreeNode = {
           details: [
             '机器审核相关后端框架设计、开发，例如：相似图片识别、内容安全检测等',
             '全文搜索相关能力设计开发',
-            '外部爬虫数据加工清洗，3个站点数据整合入 Works 商品库（10w+ 数据入了商品库）',
+            '外部爬虫数据加工清洗，多个站点数据整合入 Works 商品库',
             '运营侧数据需求提供'
           ]
         },
@@ -67,7 +67,7 @@ export const careerData: TreeNode = {
         icon: '▲',
       description: '技术分享和推广',
       details: [
-        '组内推荐使用 AI 结合 PlantUML 实现流程图实现自由',
+        '组内推荐使用 AI 结合 PlantUML 实现流程图绘制自由',
         'AI 编辑器使用推荐：Cursor 使用指北'
       ]
     },
@@ -87,7 +87,7 @@ export const careerData: TreeNode = {
           details: [
             '快速熟悉了当前服务端使用的后端技术栈，比如：RocketMQ、Apache Doris等',
             '从零开始搭建了 Works 站点的后端相关能力，在过程中也学习到了很多新知识，比如：相似图识别等',
-            '在产品和运营上也学习了挺多，之前做 ToC 产品的时候，对这一块了解不够。比如：转化率、推荐分析等。'
+            '在产品和运营上也学习了挺多，之前做 ToC 产品的时候，对这一块了解不够。比如：转化率、推荐分析等'
           ]
         },
                   {
@@ -112,8 +112,8 @@ export const careerData: TreeNode = {
         icon: '?',
       description: '思考与反思',
       details: [
-        '尽量避免出现忙碌中出错的问题',
-        '如何更好的使用 AI 是一个趋势'
+        '尽量减少出现忙碌中出错的问题',
+        '如何更好的使用 AI 来提效'
       ]
     },
           {
@@ -124,8 +124,8 @@ export const careerData: TreeNode = {
         icon: '►',
       description: '未来规划和目标',
       details: [
-        '打好基础，希望 Works 站点能够更好的发展，能给 D5 带来更多的用户以及盈利。',
-        '在 AI 大趋势下，始终保持持续学习的习惯。也要改变学习的方式。'
+        '打好基础，希望 Works 站点能够更好的发展，能给 D5 带来更多的用户以及盈利',
+        '在 AI 大趋势下，始终保持持续学习的习惯，借助 AI 来加速知识边界的扩展'
       ]
     },
           {
